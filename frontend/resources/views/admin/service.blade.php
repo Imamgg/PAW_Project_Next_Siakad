@@ -135,7 +135,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Kritik Saran</h3>
                         <p class="text-gray-600 mb-6 text-sm">Kelola kritik dan saran dari mahasiswa dan staf</p>
-                        <a href=""
+                        <a href="/admin/service/kritikSaran"
                             class="inline-flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 rounded-xl transition-colors group">
                             <span>Kelola Kritik Saran</span>
                             <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>

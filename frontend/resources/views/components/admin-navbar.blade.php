@@ -11,34 +11,6 @@
             class="w-[1.75rem] transition-transform duration-300 transform hover:scale-110" />
     </button>
 
-    <!-- Search for desktop -->
-    <div class="relative w-full max-w-[400px] mx-2.5 my-0 hidden sm:block">
-        <label class="relative w-full">
-            <input type="text" placeholder="Search here"
-                class="w-full h-10 text-lg border border-slate-600 pl-[35px] px-5 py-[5px] rounded-[40px] border-solid">
-            <x-zondicon-search
-                class="absolute w-[1.2rem] left-2.5 top-1/2 -translate-y-1/2 transition-transform duration-300 transform group-hover:scale-110" />
-        </label>
-    </div>
-
-    <!-- Search toggle for mobile -->
-    <button @click="searchOpen = !searchOpen" class="sm:hidden">
-        <x-zondicon-search class="w-[1.4rem] mx-2" />
-    </button>
-
-    <!-- Mobile Search Bar -->
-    <div x-show="searchOpen" x-transition:enter="transition ease-out duration-200"
-        x-transition:enter-start="opacity-0 transform -translate-y-2"
-        x-transition:enter-end="opacity-100 transform translate-y-0"
-        class="absolute left-0 right-0 top-[60px] p-4 sm:hidden z-50">
-        <label class="relative w-full block">
-            <input type="text" placeholder="Search here"
-                class="w-full h-10 text-lg border border-slate-600 pl-[35px] px-5 py-[5px] rounded-[40px] border-solid">
-            <x-zondicon-search
-                class="absolute w-[1.2rem] left-2.5 top-1/2 -translate-y-1/2 transition-transform duration-300 transform group-hover:scale-110" />
-        </label>
-    </div>
-
     <!-- Profile Image with Dropdown -->
     <div x-data="{ open: false }" class="relative ml-auto sm:ml-0">
         <div @click="open = !open" class="relative w-10 h-10 overflow-hidden cursor-pointer rounded-[50%] group">
@@ -160,8 +132,7 @@
                                         Change Photo
                                     </label>
                                 </div>
-                                <input type="file" id="photo" name="photo" accept="image/*"
-                                    class="hidden">
+                                <input type="file" id="photo" name="photo" accept="image/*" class="hidden">
                             </div>
                             <p class="text-sm text-gray-500">Click to upload new photo</p>
                         </div>
