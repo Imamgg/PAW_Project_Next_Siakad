@@ -41,6 +41,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/berita', [AdminController::class, 'berita']);
         Route::get('/berita/create', [AdminController::class, 'beritaAdd']);
         Route::get('/perpustakaan', [AdminController::class, 'library']);
+        Route::get('/perpustakaan/create', [AdminController::class, 'libraryAdd']);
     });
     Route::get('/report', [AdminController::class, 'report']);
     Route::get('/ukt', [AdminController::class, 'ukt']);
