@@ -257,6 +257,23 @@ class AdminController extends Controller
         return back()->withInput();
     }
 
+    public function berita()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.berita.index', ['admin' => $this->admin, 'news' => $this->news]);
+        }
+        return back()->withInput();
+    }
+
+    public function beritaAdd()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.berita.create', ['admin' => $this->admin]);
+        }
+        return back()->withInput();
+    }
+
+
     public function ukt()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
@@ -321,18 +338,18 @@ class AdminController extends Controller
         return back()->withInput();
     }
 
-    public function berita()
+    public function library()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.berita.index', ['admin' => $this->admin, 'news' => $this->news]);
+            return view('admin.library.index', ['admin' => $this->admin, 'news' => $this->news]);
         }
         return back()->withInput();
     }
 
-    public function beritaAdd()
+    public function libraryAdd()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.berita.create', ['admin' => $this->admin]);
+            return view('admin.library.add', ['admin' => $this->admin]);
         }
         return back()->withInput();
     }

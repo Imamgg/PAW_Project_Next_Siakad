@@ -56,13 +56,11 @@
         document.getElementById('editModal').classList.add('hidden');
         document.getElementById('editForm').reset();
     }
-
     async function submitEdit() {
         const id = document.getElementById('editId').value;
         const judul = document.getElementById('editJudul').value;
         const konten = document.getElementById('editKonten').value;
         const gambar = document.getElementById('editGambar').value;
-
         try {
             const token = await axios.post('/token/get-token').then(res => res.data);
             const response = await axios.patch(`http://localhost:3000/api/berita`, {
@@ -75,7 +73,6 @@
                     'X-API-TOKEN': token
                 }
             });
-
             if (response.status === 201) {
                 Swal.fire({
                     icon: "success",

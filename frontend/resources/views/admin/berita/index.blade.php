@@ -1,3 +1,4 @@
+{{-- {{ dd($news) }} --}}
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -23,8 +24,8 @@
                 @foreach ($news['data'] as $item)
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                         <div class="aspect-w-16 aspect-h-9">
-                            <img src="{{ $item['gambar'] }}" alt="{{ $item['judul'] }}"
-                                class="w-full h-48 object-cover">
+                            <img src="http://localhost:3000/uploads/berita/{{ $item['gambar'] }}"
+                                alt="{{ $item['judul'] }}" class="w-full h-48 object-cover">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center text-sm text-gray-500 mb-4">
@@ -91,7 +92,6 @@
                                     'X-API-TOKEN': token
                                 }
                             });
-
                             if (response.status === 201) {
                                 Swal.fire(
                                     'Terhapus!',

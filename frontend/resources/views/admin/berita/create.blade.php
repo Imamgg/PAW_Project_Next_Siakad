@@ -24,9 +24,9 @@
 
                     <div class="mb-6">
                         <label for="gambar" class="block text-gray-700 text-sm font-bold mb-2">
-                            Link Gambar
+                            Pilih Gambar
                         </label>
-                        <input type="text" name="gambar" id="gambar"
+                        <input type="file" name="gambar" id="gambar"
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Masukkan link gambar">
                     </div>
@@ -47,22 +47,15 @@
     const beritaForm = document.getElementById('beritaForm');
     beritaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const judul = e.target.judul.value;
-        const konten = e.target.konten.value;
-        const gambar = e.target.gambar.value;
-
+        const formData = new FormData(beritaForm);
         try {
             const token = await axios.post('/token/get-token').then(res => res.data);
-            const response = await axios.post('http://localhost:3000/api/berita/create', {
-                judul,
-                konten,
-                gambar
-            }, {
+            const response = await axios.post('http://localhost:3000/api/berita/create', formData, {
                 headers: {
+                    'Content-Type': 'multipart/form-data',
                     'X-API-TOKEN': `${token}`
                 }
             });
-
             if (response.status === 201) {
                 Swal.fire({
                     icon: "success",

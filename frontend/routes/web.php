@@ -40,6 +40,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/pengumuman/update', [AdminController::class, 'pengumumanEdit']);
         Route::get('/berita', [AdminController::class, 'berita']);
         Route::get('/berita/create', [AdminController::class, 'beritaAdd']);
+        Route::get('/perpustakaan', [AdminController::class, 'library']);
+        Route::get('/perpustakaan/create', [AdminController::class, 'libraryAdd']);
     });
     Route::get('/report', [AdminController::class, 'report']);
     Route::get('/ukt', [AdminController::class, 'ukt']);
@@ -48,7 +50,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/beasiswa', [AdminController::class, 'beasiswa']);
     Route::get('/beasiswa/add', [AdminController::class, 'beasiswaAdd']);
     Route::get('/beasiswa/update', [AdminController::class, 'beasiswaEdit']);
-    Route::get('/library', [AdminController::class, 'library']);
 });
 
 Route::prefix('student')->group(function () {

@@ -13,20 +13,15 @@
                         <table class="w-full">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
                                         Mata Kuliah</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
                                         2022</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
                                         2023</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
                                         2024</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
                                         Rata-rata</th>
                                 </tr>
                             </thead>
@@ -85,19 +80,18 @@
                 type: 'line',
                 data: {
                     labels: ['2021', '2022', '2023'],
-                    datasets: [
-                        {
+                    datasets: [{
                             label: 'Pemrograman Web',
                             data: [10, 85, 88],
                             borderColor: 'rgb(75, 192, 192)',
                             tension: 0.1
-                        }, 
+                        },
                         {
                             label: 'Basis Data',
                             data: [80, 83, 86],
                             borderColor: 'rgb(255, 99, 132)',
                             tension: 0.1
-                        }, 
+                        },
                         {
                             label: 'Algoritma',
                             data: [78, 81, 84],
@@ -130,14 +124,12 @@
                 type: 'bar',
                 data: {
                     labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
-                    datasets: [
-                        {
-                            label: 'Total Transaksi',
-                            data: [120000, 150000, 100000, 180000, 130000, 170000],
-                            backgroundColor: 'rgb(54, 162, 235)',
-                            borderWidth: 1
-                        }
-                    ]
+                    datasets: [{
+                        label: 'Total Transaksi',
+                        data: [120000, 150000, 100000, 180000, 130000, 170000],
+                        backgroundColor: 'rgb(54, 162, 235)',
+                        borderWidth: 1
+                    }]
                 },
                 options: {
                     responsive: true,

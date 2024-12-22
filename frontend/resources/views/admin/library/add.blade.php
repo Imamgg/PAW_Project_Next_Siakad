@@ -75,13 +75,12 @@
                 const form = document.getElementById('addBook');
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
-
                     const formData = new FormData(form);
-
                     await axios.post('http://localhost:3000/api/library/create', formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',
-                                'X-API-TOKEN': await axios.post('/token/get-token').then(res => res.data)
+                                'X-API-TOKEN': await axios.post('/token/get-token').then(res => res
+                                    .data)
                             }
                         })
                         .then(function(response) {
@@ -90,6 +89,8 @@
                                 icon: 'success',
                                 title: 'Success',
                                 text: 'Book added successfully'
+                            }).then(() => {
+                                window.location.replace('/admin/service/pembayaran');
                             });
                         })
                         .catch(function(error) {
