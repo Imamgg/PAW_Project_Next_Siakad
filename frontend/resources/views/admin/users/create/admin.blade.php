@@ -1,32 +1,33 @@
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
-        <div class="container mx-auto px-4 py-8">
-            <div class="p-4 border-2 border-gray-200 rounded-lg">
-                <div class="mb-4">
-                    <h2 class="text-2xl font-bold">Manajemen Akun Admin</h2>
-                    <p class="text-sm text-gray-500">Kelola administrator Anda dengan mudah dari sini</p>
+        <div class="container mx-auto px-6 py-10">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Manajemen Akun Admin</h2>
+                    <p class="text-sm text-gray-600 mt-1">Kelola administrator Anda dengan mudah dari sini</p>
                 </div>
 
-                <form class="space-y-4" id="adminForm">
-                    <div class="flex flex-col gap-4">
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Nama</label>
+                <form class="space-y-6" id="adminForm">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-700">Nama</label>
                             <input type="text" id="adminName" name="name"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400 transition-all">
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Email</label>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-700">Email</label>
                             <input type="email" id="adminEmail" name="email"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400 transition-all">
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Password</label>
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="block text-sm font-semibold text-gray-700">Password</label>
                             <input type="password" id="adminPwd" name="password"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400 transition-all">
                         </div>
                     </div>
+
                     <div class="flex justify-end gap-4 pt-6 mt-6 border-t border-gray-200">
                         <a href="/admin/users"
                             class="px-6 py-2.5 bg-red-500 text-white rounded-md hover:bg-red-900 transition-colors">

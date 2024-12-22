@@ -353,4 +353,12 @@ class AdminController extends Controller
         }
         return back()->withInput();
     }
+
+    public function kritikSaran()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.kritikSaran.index', ['admin' => $this->admin]);
+        }
+        return back()->withInput();
+    }
 }
