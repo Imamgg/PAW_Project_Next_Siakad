@@ -17,56 +17,6 @@
                     </p>
                 </div>
 
-                <!-- Stats Overview -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-5">
-                <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-6 hover-scale">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500">Nilai IPK</p>
-                            <h3 class="text-2xl font-bold">{{ $student['data']['student']['gpa'] }}</h3>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-6 hover-scale">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500">SKS Completed</p>
-                            <h3 class="text-2xl font-bold">{{ $student['data']['student']['sks'] }}/144</h3>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-6 hover-scale">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500">Attendance Rate</p>
-                            <h3 class="text-2xl font-bold">95%</h3>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-6 hover-scale">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500">Mata Kuliah Aktif</p>
-                            <h3 class="text-2xl font-bold">6</h3>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
             <!-- Quick Access Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-3">
                 <!-- Email -->
