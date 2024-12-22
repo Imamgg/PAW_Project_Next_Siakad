@@ -114,7 +114,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Tambah Berita</h3>
                         <p class="text-gray-600 mb-6 text-sm">Kelola berita kampus dengan mudah dan cepat</p>
-                        <a href=""
+                        <a href="/admin/service/berita"
                             class="inline-flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-purple-600 hover:bg-purple-50 rounded-xl transition-colors group">
                             <span>Kelola Berita</span>
                             <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
@@ -143,28 +143,28 @@
                     </div>
                 </div>
 
+                <!-- Perpustakaan Card -->
                 <div
                     class="bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 group overflow-hidden">
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <div class="p-3 bg-green-50 rounded-2xl">
-                                <i class="fas fa-credit-card text-2xl text-green-500"></i>
+                                <i class="fas fa-book text-2xl text-green-500"></i>
                             </div>
                             <span
                                 class="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Aktif</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Perpustakaan</h3>
                         <p class="text-gray-600 mb-6 text-sm">
-                            Kelola perpustakaan dengan mudah dan efisien
+                            Kelola perpustakaan kampus dengan mudah dan efisien
                         </p>
-                        <a href="/admin/library"
+                        <a href="/admin/service/perpustakaan"
                             class="inline-flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-green-600 hover:bg-green-50 rounded-xl transition-colors group">
                             <span>Kelola Perpustakaan</span>
                             <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </x-admin-sidebar>

@@ -17,6 +17,8 @@ class AdminController extends Controller
     public $schedules;
     public $scholarships;
     public $announcements;
+    public $payments;
+    public $news;
     public function __construct()
     {
         $this->token = TokenController::get();
@@ -29,6 +31,8 @@ class AdminController extends Controller
         $this->schedules = ScheduleController::getSchedules();
         $this->scholarships = BeasiswaController::getAllBeasiswa();
         $this->announcements = PengumumanController::getAllAnnouncements();
+        $this->payments = PembayaranController::getPayments();
+        $this->news = BeritaController::getNews();
     }
 
     public function getUsers()
@@ -248,10 +252,27 @@ class AdminController extends Controller
     public function report()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.report', ['admin' => $this->admin]);
+            return view('admin.report', ['admin' => $this->admin, 'payments' => $this->payments]);
         }
         return back()->withInput();
     }
+
+    public function berita()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.berita.index', ['admin' => $this->admin, 'news' => $this->news]);
+        }
+        return back()->withInput();
+    }
+
+    public function beritaAdd()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.berita.create', ['admin' => $this->admin]);
+        }
+        return back()->withInput();
+    }
+
 
     public function ukt()
     {
