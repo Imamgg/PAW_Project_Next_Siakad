@@ -117,6 +117,7 @@
                 const row = e.target.closest('.course-row');
                 const courseCode = e.target.closest('.course-row').querySelector('td').innerText;
                 const status = e.target.previousElementSibling.value;
+                console.log(status);
 
                 try {
                     const token = await axios.post('/token/get-token').then(res => res.data);
@@ -125,7 +126,7 @@
                         isActive: status === 'true' ? true : false
                     }, {
                         headers: {
-                            'X-API-TOKEN': token
+                            'X-API-TOKEN': `${token}`
                         }
                     }).then(data => data.data);
                     if (response.status === 201) {
@@ -147,7 +148,7 @@
                 }
             });
         });
-        
+
         document.getElementById('semesterFilter').addEventListener('change', function() {
             const selectedSemester = this.value;
             const rows = document.querySelectorAll('.course-row');
