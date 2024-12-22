@@ -1,38 +1,38 @@
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
         <div class="container mx-auto px-4 py-8">
-            <div class="p-4 border-2 border-gray-200 rounded-lg">
-                <div class="mb-4">
-                    <h2 class="text-2xl font-bold">Manajemen Mata Kuliah</h2>
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Manajemen Mata Kuliah</h2>
                 </div>
-
-                <form class="space-y-4" id="courseForm">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Nama Matkul</label>
+                <form class="space-y-6" id="courseForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">Nama Matkul</label>
                             <input type="text" name="name"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full p-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400">
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Kode Matkul</label>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">Kode Matkul</label>
                             <input type="text" name="code"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full p-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400">
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Dosen Pengajar</label>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">Dosen Pengajar</label>
                             <select name="teacher" id="dosen_pembimbing"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full p-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400">
                                 @foreach ($teachers['data'] as $teacher)
                                     <option value="{{ $teacher['teacher']['id'] }}">{{ $teacher['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Jumlah SKS</label>
-                            <select name="sks" class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">Jumlah SKS</label>
+                            <select name="sks"
+                                class="w-full p-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -42,9 +42,10 @@
                             </select>
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Semester</label>
-                            <select name="semester" class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">Semester</label>
+                            <select name="semester"
+                                class="w-full p-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400">
                                 <option value="semester_1">Semester 1</option>
                                 <option value="semester_2">Semester 2</option>
                                 <option value="semester_3">Semester 3</option>
@@ -56,20 +57,20 @@
                             </select>
                         </div>
 
-                        <div>
-                            <label class="block text-base font-medium text-gray-700">Program Studi</label>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">Program Studi</label>
                             <input type="text" name="program_studi"
-                                class="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm">
+                                class="w-full p-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ultramarine-400 focus:border-ultramarine-400">
                         </div>
                     </div>
 
                     <div class="flex justify-end gap-4 pt-6 mt-6 border-t border-gray-200">
-                        <a href="/admin/users"
-                            class="px-6 py-2.5 bg-red-500 text-white rounded-md hover:bg-red-900 transition-colors">
+                        <a href="/admin/course"
+                            class="px-6 py-2.5 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg">
                             Batal
                         </a>
                         <button type="submit"
-                            class="px-6 py-2.5 bg-ultramarine-400 text-white rounded-md hover:bg-ultramarine-900 transition-colors">
+                            class="px-6 py-2.5 rounded-lg bg-gradient-to-r from-ultramarine-400 to-ultramarine-500 text-white hover:from-ultramarine-500 hover:to-ultramarine-600 transition-all duration-200 shadow-md hover:shadow-lg">
                             Simpan
                         </button>
                     </div>
