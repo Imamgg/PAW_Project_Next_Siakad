@@ -316,4 +316,20 @@ class AdminController extends Controller
         }
         return back()->withInput();
     }
+
+    public function library()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.library.index', ['admin' => $this->admin]);
+        }
+        return back()->withInput();
+    }
+
+    public function libraryAdd()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.library.add', ['admin' => $this->admin]);
+        }
+        return back()->withInput();
+    }
 }

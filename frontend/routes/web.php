@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/beasiswa', [AdminController::class, 'beasiswa']);
     Route::get('/beasiswa/add', [AdminController::class, 'beasiswaAdd']);
     Route::get('/beasiswa/update', [AdminController::class, 'beasiswaEdit']);
+    Route::get('/library', [AdminController::class, 'library']);
 });
 
 Route::prefix('student')->group(function () {
