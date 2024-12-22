@@ -341,7 +341,7 @@ class AdminController extends Controller
     public function library()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.library.index', ['admin' => $this->admin]);
+            return view('admin.library.index', ['admin' => $this->admin, 'news' => $this->news]);
         }
         return back()->withInput();
     }
