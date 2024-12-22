@@ -1,108 +1,75 @@
+<x-admin-layout>
+    <x-admin-sidebar :admin="$admin">
+        <div class="container mx-auto px-6 py-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-6">Tambah Pembayaran</h2>
 
-<x-layout>
-    <x-admin-layout :admin="$admin">
-        <main class="ml-20 mr-20" x-data>
-            <div class="max-w-6xl mx-auto p-6">
-                <a href="/admin/service" class="flex items-center text-gray-400 hover:text-gray-300 mb-6">
-                    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    Kembali
-                </a>
-
-                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-                    <div class="border-b pb-4 mb-4">
-                        <h1 class="text-2xl font-bold text-gray-800">Data Pembayaran</h1>
-                        <p class="text-gray-600">Uang Kuliah Tahunan</p>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <select name="semester" id="semester" class="w-1/2">
-                            <option value="semester_1">Semester 1</option>
-                            <option value="semester_2">Semester 2</option>
+                <form id="pembayaranForm" class="space-y-4">
+                    <div class="mb-4">
+                        <label for="semester" class="block text-gray-700 text-sm font-bold mb-2">
+                            Semester
+                        </label>
+                        <select name="semester" id="semester"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="">Pilih Semester</option>
+                            @for ($i = 1; $i <= 8; $i++)
+                                <option value="semester_{{ $i }}">Semester {{ $i }}</option>
+                            @endfor
                         </select>
-                        <div class="text-right">
-                            <button @click="$dispatch('create-pembayaran-modal')"
-                                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Tambah Pembayaran
-                            </button>
-                        </div>
                     </div>
-                </div>
 
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <div class="px-6 py-4 border-b grid grid-cols-2">
-                        <h2 class="text-lg font-semibold text-gray-800">Riwayat Pembayaran</h2>
+                    <div class="mb-6">
+                        <label for="total" class="block text-gray-700 text-sm font-bold mb-2">
+                            Total Pembayaran
+                        </label>
+                        <input type="number" name="total" id="total"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Masukkan total pembayaran">
                     </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Semester</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Total</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Status Pembayaran</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @if (!empty($absences['data']))
-                                    @foreach ($absences['data'] as $absence)
-                                        <tr class="hover:bg-gray-50">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                {{ $absence['pertemuan'] }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ \Carbon\Carbon::parse($absence['statusCounts'][0]['createAt'])->setTimezone('Asia/Jakarta')->format('d F Y, H:i') }}
-                                            </td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">
-                                                {{ $absence['statusCounts'][0]['materi'] }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                @php
-                                                    $statuses = collect($absence['statusCounts'])->keyBy(
-                                                        'statusKehadiran',
-                                                    );
-                                                @endphp
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    HADIR
-                                                    {{ $statuses['HADIR']['count'] ?? '0' }}
-                                                </span>
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                                    ALPHA
-                                                    {{ $statuses['ALPA']['count'] ?? '0' }}
-                                                </span>
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                                                    SAKIT
-                                                    {{ $statuses['SAKIT']['count'] ?? '0' }}
-                                                </span>
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                    IZIN
-                                                    {{ $statuses['IZIN']['count'] ?? '0' }}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan="4"
-                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                                            Tidak ada data absensi.
-                                        </td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
+
+                    <div class="flex items-center justify-end">
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Tambah Pembayaran
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
-        </main>
-    </x-admin-layout>
-</x-layout>
+        </div>
+    </x-admin-sidebar>
+</x-admin-layout>
+
+<script>
+    const pembayaranForm = document.getElementById('pembayaranForm');
+    pembayaranForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const semester = e.target.semester.value;
+        const total = e.target.total.value;
+        const token = await axios.post('/token/get-token').then(res => res.data);
+        try {
+            const response = await axios.post('http://localhost:3000/api/pembayaran/create', {
+                semester,
+                total: parseInt(total),
+            }, {
+                headers: {
+                    'X-API-TOKEN': `${token}`
+                }
+            });
+            if (response.status === 201) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: response.data.message,
+                })
+                window.location.replace('/admin/service');
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.response?.data.errors || error.message,
+            })
+        }
+    });
+</script>

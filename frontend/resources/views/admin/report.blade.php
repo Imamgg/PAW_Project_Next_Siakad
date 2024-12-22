@@ -1,3 +1,4 @@
+{{-- {{ dd($payments) }} --}}
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
         <div class="container mx-auto px-4 py-8">

@@ -17,6 +17,7 @@ class AdminController extends Controller
     public $schedules;
     public $scholarships;
     public $announcements;
+    public $payments;
     public function __construct()
     {
         $this->token = TokenController::get();
@@ -248,7 +249,7 @@ class AdminController extends Controller
     public function report()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.report', ['admin' => $this->admin]);
+            return view('admin.report', ['admin' => $this->admin, 'payments' => $this->payments]);
         }
         return back()->withInput();
     }
