@@ -19,6 +19,7 @@ class AdminController extends Controller
     public $announcements;
     public $payments;
     public $news;
+    public $libraries;
     public function __construct()
     {
         $this->token = TokenController::get();
@@ -33,6 +34,7 @@ class AdminController extends Controller
         $this->announcements = PengumumanController::getAllAnnouncements();
         $this->payments = PembayaranController::getPayments();
         $this->news = BeritaController::getNews();
+        $this->libraries = PerpustakaanController::getPerpustakaan();
     }
 
     public function getUsers()
@@ -341,7 +343,7 @@ class AdminController extends Controller
     public function library()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.library.index', ['admin' => $this->admin, 'news' => $this->news]);
+            return view('admin.library.index', ['admin' => $this->admin, 'libraries' => $this->libraries['status'] == 200 ? $this->libraries : null]);
         }
         return back()->withInput();
     }

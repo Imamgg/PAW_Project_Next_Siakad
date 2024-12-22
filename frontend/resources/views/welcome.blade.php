@@ -2,8 +2,8 @@
     'ourTeam' => [
         [
             'name' => 'Imam Syafii',
-            'role' => 'Copas Developer',
-            'img' => 'images/team-member-1.png',
+            'role' => 'Ctrl+C Ctrl+V Developer',
+            'img' => 'images/imam.jpg',
             'university' => 'Universitas Trunojoyo Madura',
             'linkedIn' => 'https://www.linkedin.com/in/imamsyafi/',
             'twitter' => 'https://twitter.com/ImamSyafi',
@@ -11,21 +11,21 @@
         ],
         [
             'name' => 'Ahmad Mufid Risqi',
-            'role' => 'Backend Sejati',
-            'img' => 'images/team-member-1.png',
+            'role' => 'Fullstack Developer',
+            'img' => 'images/mufid.jpg',
             'university' => 'Universitas Trunojoyo Madura',
-            'linkedIn' => 'https://www.linkedin.com/in/',
-            'twitter' => 'https://twitter.com/',
+            'linkedIn' => 'https://www.linkedin.com/in/coding-with-mufid/',
+            'twitter' => 'https://x.com/MufidRisqi30683',
             'github' => 'https://github.com/Mufid-031',
         ],
         [
             'name' => 'Ach. Lutfi Madani',
-            'role' => 'Frontend Sejati',
-            'img' => 'images/team-member-1.png',
+            'role' => 'Fullstack Developer',
+            'img' => 'images/lutfi.jpg',
             'university' => 'Universitas Trunojoyo Madura',
-            'linkedIn' => 'https://www.linkedin.com/in/',
-            'twitter' => 'https://twitter.com/',
-            'github' => 'https://github.com/',
+            'linkedIn' => '#',
+            'twitter' => 'https://x.com/adlhorgygbeda?t=FyPyEZdKrTSObn6goH3acw&s=09',
+            'github' => 'https://github.com/AchmadLutfi196',
         ],
         [
             'name' => 'Harits Putra Junaidi',
@@ -47,12 +47,12 @@
         ],
         [
             'name' => 'Moh. Ariel Rifqi Ahsan',
-            'role' => 'Copas Developer',
-            'img' => 'images/team-member-1.png',
+            'role' => 'Frontend Developer',
+            'img' => 'images/ariel.jpg',
             'university' => 'Universitas Trunojoyo Madura',
-            'linkedIn' => 'https://www.linkedin.com/in/',
-            'twitter' => 'https://twitter.com/',
-            'github' => 'https://github.com/',
+            'linkedIn' => '#',
+            'twitter' => '#',
+            'github' => 'https://github.com/arielahsan',
         ],
     ],
 ])
@@ -187,8 +187,10 @@
                     <div
                         class="bg-white rounded-xl shadow-lg p-8 text-center group relative transform transition-all duration-300 hover:-translate-y-2">
                         <div class="relative overflow-hidden rounded-xl mb-6">
-                            <img src="{{ asset($team['img']) }}" alt="Team Member"
-                                class="w-full object-cover transition duration-300 group-hover:scale-105">
+                            <div class="aspect-square">
+                                <img src="{{ asset($team['img']) }}" alt="Team Member"
+                                    class="aspect-square transition duration-300 group-hover:scale-105">
+                            </div>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
