@@ -96,10 +96,6 @@
                                     <span
                                         class="w-2/3 font-medium">{{ strToLower($student['data']['student']['statusStudent']) }}</span>
                                 </div>
-                                <div class="flex border-b border-gray-200 pb-3">
-                                    <span class="w-1/3 text-gray-600">IPK</span>
-                                    <span class="w-2/3 font-medium">{{ $student['data']['student']['gpa'] }}</span>
-                                </div>
                             </div>
                         </div>
                     </div>
