@@ -391,4 +391,12 @@ class AdminController extends Controller
         }
         return back()->withInput();
     }
+
+    public function alumni()
+    {
+        if ($this->admin['data']['role'] === "ADMIN") {
+            return view('admin.alumni.index', ['admin' => $this->admin, 'alumni' => $this->alumni, 'students' => $this->students]);
+        }
+        return back()->withInput();
+    }
 }
