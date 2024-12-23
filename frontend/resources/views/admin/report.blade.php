@@ -1,4 +1,3 @@
-{{-- {{ dd($payments) }} --}}
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
         <div class="container mx-auto px-4 py-8">
@@ -64,7 +63,7 @@
 
             <div class="bg-white rounded-lg shadow">
                 <div class="p-6">
-                    <h2 class="text-xl font-bold mb-4">Grafik Detail Transaksi (Mitrans)</h2>
+                    <h2 class="text-xl font-bold mb-4">Grafik Detail Transaksi</h2>
                     <div class="h-96">
                         <canvas id="transactionChart"></canvas>
                     </div>
@@ -72,7 +71,6 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             // Grafik Performa Akademik
             const academicCtx = document.getElementById('academicChart').getContext('2d');
@@ -118,15 +116,23 @@
                 }
             });
 
-            // Grafik Detail Transaksi (Mitrans)
+            const payments = @json($payments['data']);
+            const monthlyTotals = {};
+            payments.forEach(payment => {
+                const date = new Date(payment.createdAt);
+                const month = date.toLocaleString('default', {
+                    month: 'long'
+                });
+                monthlyTotals[month] = (monthlyTotals[month] || 0) + payment.total;
+            });
             const transactionCtx = document.getElementById('transactionChart').getContext('2d');
             new Chart(transactionCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
+                    labels: Object.keys(monthlyTotals),
                     datasets: [{
                         label: 'Total Transaksi',
-                        data: [120000, 150000, 100000, 180000, 130000, 170000],
+                        data: Object.values(monthlyTotals),
                         backgroundColor: 'rgb(54, 162, 235)',
                         borderWidth: 1
                     }]
@@ -135,13 +141,25 @@
                     responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'Rp ' + new Intl.NumberFormat('id-ID').format(value);
+                                }
+                            }
                         }
                     },
                     plugins: {
                         title: {
                             display: true,
                             text: 'Detail Transaksi Bulanan'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Rp ' + new Intl.NumberFormat('id-ID').format(context.raw);
+                                }
+                            }
                         }
                     }
                 }

@@ -1,5 +1,4 @@
 {{-- {{ dd($libraries) }} --}}
-
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
         <div class="container mx-auto px-4 py-8">
@@ -35,34 +34,42 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($libraries['data'] as $library)
-                                <tr class="border-b hover:bg-gray-50">
-                                    <td class="px-6 py-4">
-                                        <img src="http://localhost:3000/uploads/perpustakaan/{{ $library['cover'] }}"
-                                            alt="{{ $library['title'] }}" class="w-16 h-24 object-cover rounded">
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <div class="font-medium text-gray-900">{{ $library['title'] }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 text-gray-600">{{ $library['author'] }}</td>
-                                    <td class="px-6 py-4 text-gray-600">{{ $library['page'] }}</td>
-                                    <td class="px-6 py-4">
-                                        <p class="text-gray-600 truncate w-64">{{ $library['description'] }}</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <div class="flex gap-3">
-                                            <button type="submit"
-                                                class="px-3 py-1 bg-ultramarine-400 text-white rounded-md hover:bg-ultramarine-900 transition-colors">
-                                                Edit
-                                            </button>
-                                            <button type="button" onclick="deleteConfirmation({{ $library['id'] }})"
-                                                class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-900 transition-colors">
-                                                Hapus
-                                            </button>
-                                        </div>
-                                    </td>
+                            @if ($libraries == null):
+                                <tr>
+                                    <td colspan="6" class="text-center py-4">Data not found</td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($libraries['data'] as $library)
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4">
+                                            <img src="http://localhost:3000/uploads/perpustakaan/{{ $library['cover'] }}"
+                                                alt="{{ $library['title'] }}" class="w-16 h-24 object-cover rounded">
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="font-medium text-gray-900">{{ $library['title'] }}</div>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-600">{{ $library['author'] }}</td>
+                                        <td class="px-6 py-4 text-gray-600">{{ $library['page'] }}</td>
+                                        <td class="px-6 py-4">
+                                            <p class="text-gray-600 truncate w-64">{{ $library['description'] }}</p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex gap-3">
+                                                <button type="button"
+                                                    onclick="openEditLibraryModal('{{ $library['id'] }}', '{{ $library['title'] }}', '{{ $library['author'] }}', '{{ $library['page'] }}', '{{ $library['description'] }}', '{{ $library['cover'] }}')"
+                                                    class="px-3 py-1 bg-ultramarine-400 text-white rounded-md hover:bg-ultramarine-900 transition-colors">
+                                                    Edit
+                                                </button>
+                                                <button type="button"
+                                                    onclick="deleteConfirmation({{ $library['id'] }})"
+                                                    class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-900 transition-colors">
+                                                    Hapus
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -70,6 +77,8 @@
         </div>
     </x-admin-sidebar>
 </x-admin-layout>
+
+<x-library-edit />
 
 <script>
     function deleteConfirmation(id) {
