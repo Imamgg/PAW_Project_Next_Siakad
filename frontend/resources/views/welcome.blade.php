@@ -45,6 +45,7 @@
         </div>
     </section>
     <x-feedback />
+    <x-maps />
     <x-footer-pages />
     <script>
         document.addEventListener('DOMContentLoaded', function() {

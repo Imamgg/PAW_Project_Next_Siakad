@@ -75,6 +75,7 @@
                     </button>
                     <div id="dropdown-profile" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
                         <a href="/student/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Data Pribadi</a>
+                        <a href="/student/kritik-saran" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kritik dan Saran</a>
                         <button id="sign-out" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
                     </div>
                 </div>

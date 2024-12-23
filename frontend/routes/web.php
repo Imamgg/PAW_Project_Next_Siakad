@@ -76,6 +76,7 @@ Route::prefix('student')->group(function () {
     Route::get('/payment/status', [StudentController::class, 'statusPembayaran']);
     Route::get('/profile', [StudentController::class, 'profile']);
     Route::get('/profile/update', [StudentController::class, 'editProfile']);
+    Route::get('/kritik-saran', [StudentController::class, 'kritikSaran']);
 });
 
 
@@ -94,6 +95,7 @@ Route::prefix('dosen')->group(function () {
     Route::get('/validasi', [TeacherController::class, 'validation'])->name('dosen.validasi');
     Route::get('/validasi/detail/{studentId}', [TeacherController::class, 'validate'])->name('dosen.detail.krs');
     Route::get('/cuti-req', [TeacherController::class, 'cutiReq'])->name('dosen.cuti-req');
+    Route::get('/kritik-saran', [TeacherController::class, 'kritikSaranDosen'])->name('dosen.kritik-saran');
     Route::prefix('materi')->group(function () {
         Route::get('/', [TeacherController::class, 'materi']);
         Route::get('/tambah', [TeacherController::class, 'materiAdd'])->name('dosen.materi.tambah');

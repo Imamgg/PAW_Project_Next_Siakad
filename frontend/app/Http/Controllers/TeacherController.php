@@ -249,4 +249,14 @@ class TeacherController extends Controller
         }
         return back()->withInput();
     }
+
+    public function kritikSaranDosen()
+    {
+        if ($this->teacher['data']['role'] === "TEACHER") {
+            return view('dosen.dosen-kritik-saran', [
+                'teacher' => $this->teacher
+            ]);
+        }
+        return back()->withInput();
+    }
 }

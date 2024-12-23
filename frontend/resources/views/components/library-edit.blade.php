@@ -75,10 +75,11 @@
         const page = document.getElementById('page').value;
         const description = document.getElementById('description').value;
         const cover = document.getElementById('cover').files[0];
+        console.log(id, title, author, page, description, cover);
         try {
             const token = await axios.post('/token/get-token').then(res => res.data);
             const response = await axios.patch(`http://localhost:3000/api/library`, {
-                id: parseInt(id),
+                id,
                 title,
                 author,
                 page: parseInt(page),
