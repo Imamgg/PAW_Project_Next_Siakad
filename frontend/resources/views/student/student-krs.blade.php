@@ -285,12 +285,20 @@
         });
 
         if (totalSks > 24) {
-            alert('Total SKS tidak boleh lebih dari 24.');
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Total SKS tidak boleh lebih dari 24.",
+            })
             return;
         }
 
         if (hasConflict) {
-            alert('Jadwal bentrok terdeteksi. Silakan pilih jadwal yang tidak bentrok.');
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Jadwal bentrok terdeteksi. Silakan pilih jadwal yang tidak bentrok.",
+            })
             return;
         }
 

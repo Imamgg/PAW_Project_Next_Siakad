@@ -165,6 +165,27 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Tambah Server Card -->
+                <div
+                    class="bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 group overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-purple-50 rounded-2xl">
+                                <i class="fas fa-server text-2xl text-purple-500"></i>
+                            </div>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Aktif</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Management Server</h3>
+                        <p class="text-gray-600 mb-6 text-sm">Kelola server kampus dengan mudah dan cepat</p>
+                        <a href="/admin/service/server"
+                            class="inline-flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-purple-600 hover:bg-purple-50 rounded-xl transition-colors group">
+                            <span>Kelola Server</span>
+                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </x-admin-sidebar>

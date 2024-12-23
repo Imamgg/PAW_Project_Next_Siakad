@@ -101,7 +101,7 @@
                 body * {
                     visibility: hidden;
                 }
-                
+
                 /* Show only printable content */
                 .print-container,
                 .print-container * {
@@ -174,7 +174,7 @@
             const updateGradeButtons = document.querySelectorAll('.update-status');
             updateGradeButtons.forEach((button) => {
                 button.addEventListener('click', async () => {
-                    const id = button.parentElement.parentElement.firstElementChild.value;
+                    const id = button.parentElement.parentElement.parentElement.firstElementChild.value;
                     const grade = button.parentElement.firstElementChild.value;
                     try {
                         const token = await axios.post('/token/get-token').then(res => res.data);
