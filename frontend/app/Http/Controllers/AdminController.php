@@ -375,7 +375,7 @@ class AdminController extends Controller
         if ($this->admin['data']['role'] === "ADMIN") {
             $kritikSaran = Http::withHeaders([
                 'X-API-TOKEN' => $this->token
-            ])->get('http://localhost:3000/api/kritik-saran')->json();
+            ])->get('http://localhost:3000/api/kritikSaran')->json();
             return view('admin.kritikSaran.index', ['admin' => $this->admin, 'feedbacks' => $kritikSaran]);
         }
         return back()->withInput();

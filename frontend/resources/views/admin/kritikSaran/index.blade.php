@@ -18,6 +18,7 @@
                     <tbody>
                         @forelse($feedbacks['data'] as $feedback)
                             <tr class="border-b">
+                                <input type="hidden" name="id" id="id" value="{{ $feedback['id'] }}">
                                 <td class="px-4 py-2">{{ $feedback['name'] }}</td>
                                 <td class="px-4 py-2">{{ $feedback['email'] }}</td>
                                 <td class="px-4 py-2">
@@ -26,15 +27,10 @@
                                     </div>
                                 </td>
                                 <td class="px-4 py-2">
-                                    <form action="{{ route('admin.feedbacks.destroy', $feedback['id']) }}" method="POST"
-                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus feedback ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">
-                                            Hapus
-                                        </button>
-                                    </form>
+                                    <button
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline delete">
+                                        Hapus
+                                    </button>
                                 </td>
                             </tr>
                         @empty
@@ -48,3 +44,49 @@
         </div>
     </x-admin-sidebar>
 </x-admin-layout>
+
+<script>
+    const deleteButtons = document.querySelectorAll('.delete');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const id = button.parentElement.parentElement.querySelector('input[name="id"]').value;
+            const token = await axios.post('/token/get-token').then(res => res.data);
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus kritik dan saran ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const response = await axios.delete(
+                            `http://localhost:3000/api/kritikSaran/${id}`, {
+                                headers: {
+                                    'X-API-TOKEN': `${token}`
+                                }
+                            });
+                        if (response.status === 201) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success",
+                                text: "Kritik dan saran berhasil dihapus",
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: error.response?.data.errors || error.message,
+                        })
+                    }
+                }
+            })
+        })
+    })
+</script>
