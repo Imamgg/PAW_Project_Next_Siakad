@@ -14,7 +14,7 @@ class PembayaranController extends Controller
     if ($token) {
       $response = Http::withHeaders([
         'X-API-TOKEN' => $token
-      ])->get('http://localhost:3000/api/pembayaran');
+      ])->get('http://localhost:3000/api/pembayaran/admin');
 
       return $response->json();
     }
