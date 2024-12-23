@@ -1,3 +1,5 @@
+{{-- {{ dd($news) }} --}}
+
 <x-layout>
     <header class="fixed w-full z-50 backdrop-blur-sm shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -26,20 +28,19 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold mb-8 text-center">Berita Terkini</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @for ($i = 1; $i <= 3; $i++)
+                @foreach ($news['data'] as $new)
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <img src="{{ asset('images/news-' . $i . '.jpg') }}" alt="News {{ $i }}"
+                        <img src="http://localhost:3000/uploads/berita/{{ $new['gambar'] }}" alt="News {{ $new['judul'] }}"
                             class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Judul Berita {{ $i }}</h3>
-                            <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h3 class="text-xl font-semibold mb-2">{{ $new['judul'] }}</h3>
+                            <p class="text-gray-600 mb-4">{{ $new['konten'] }}</p>
                             <a href="#"
                                 class="text-slate-600 hover:bg-slate-50 border border-slate-600 px-4 py-2 rounded inline-block">Baca
                                 Selengkapnya</a>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </section>

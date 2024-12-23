@@ -5,10 +5,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TokenController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $news = Http::get('http://localhost:3000/api/berita')->json();
+    return view('welcome', compact('news'));
 });
 
 Route::prefix('auth')->group(function () {

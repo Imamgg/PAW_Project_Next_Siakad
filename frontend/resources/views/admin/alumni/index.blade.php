@@ -207,7 +207,7 @@
                     },
                 });
 
-                if (response.status === 200) {
+                if (response.status === 201) {
                     Swal.fire({
                         icon: "success",
                         title: "Success",
@@ -240,13 +240,13 @@
             if (result.isConfirmed) {
                 const token = await axios.post('/token/get-token').then(res => res.data);
                 try {
-                    const response = await axios.delete(`http://localhost:3000/api/alumni/delete/${id}`, {
+                    const response = await axios.delete(`http://localhost:3000/api/alumni/${id}`, {
                         headers: {
                             'X-API-TOKEN': `${token}`,
                         },
                     });
 
-                    if (response.status === 200) {
+                    if (response.status === 201) {
                         Swal.fire({
                             icon: "success",
                             title: "Success",

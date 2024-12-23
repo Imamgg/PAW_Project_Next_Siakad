@@ -3,7 +3,9 @@
 <x-admin-layout>
     <x-admin-sidebar :admin="$admin">
         <div class="container mx-auto px-4 py-8">
-            <h1 class="text-3xl font-bold mb-6">Server Status</h1>
+            <div class="container mx-auto px-4 py-8">
+                <h1 class="text-3xl font-bold mb-6">Server Status</h1>
+            </div>
 
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <table class="w-full">
