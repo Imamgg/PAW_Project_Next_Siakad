@@ -1,4 +1,5 @@
 {{-- {{ dd($enrollments, $schedules) }} --}}
+{{-- {{ dd($payments) }} --}}
 
 <x-student-layout :student="$student">
     <x-layout>
@@ -75,44 +76,51 @@
                                 <tbody>
                                     @php
                                         $selectedSemester = request('semester', 'semester_1');
+                                        $paymentStatus = collect($payments)->firstWhere('semester', $selectedSemester)['statusPembayaran'] ?? 'PENDING';
                                     @endphp
 
-                                    @foreach ($schedules['data'] as $key => $schedule)
-                                        @if ($schedule['course']['semester'] == $selectedSemester)
-                                            @php
-                                                $isEnrolled = false;
-                                                foreach ($enrollments['data'] as $enrollment) {
-                                                    if (
-                                                        $enrollment['schedule']['course']['code'] ===
-                                                        $schedule['course']['code']
-                                                    ) {
-                                                        $isEnrolled = true;
-                                                        break;
+                                    @if ($paymentStatus === 'PENDING')
+                                        <tr class="hover:bg-gray-50">
+                                            <td colspan="7" class="text-red-600 font-semibold text-center text-lg p-4">Anda tidak dapat melakukan KRS untuk {{ ucfirst(str_replace('_', ' ', $selectedSemester)) }} karena status pembayaran Anda masih PENDING. Silakan selesaikan pembayaran terlebih dahulu.</td>
+                                        </tr>
+                                    @else
+                                        @foreach ($schedules['data'] as $key => $schedule)
+                                            @if ($schedule['course']['semester'] == $selectedSemester)
+                                                @php
+                                                    $isEnrolled = false;
+                                                    foreach ($enrollments['data'] as $enrollment) {
+                                                        if (
+                                                            $enrollment['schedule']['course']['code'] ===
+                                                            $schedule['course']['code']
+                                                        ) {
+                                                            $isEnrolled = true;
+                                                            break;
+                                                        }
                                                     }
-                                                }
-                                            @endphp
-                                            <tr class="hover:bg-gray-50 {{ $isEnrolled ? 'hidden' : '' }}"
-                                                data-schedule-id="{{ $schedule['id'] }}">
-                                                <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                                                    {{ $loop->iteration }}</td>
-                                                <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                                                    {{ $schedule['course']['code'] }}</td>
-                                                <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                                                    {{ $schedule['course']['name'] }}</td>
-                                                <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                                                    {{ \Carbon\Carbon::parse($schedule['day'])->locale('id')->dayName }}, {{ $schedule['time'] }}</td>
-                                                <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                                                    {{ $schedule['course']['semester'] }}</td>
-                                                <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                                                    {{ $schedule['course']['sks'] }}</td>
-                                                <td class="border border-gray-200 px-4 py-3 text-center">
-                                                    <input type="checkbox" name="scheduleId"
-                                                        value="{{ $schedule['id'] }}"
-                                                        class="form-checkbox h-5 w-5 text-blue-600">
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
+                                                @endphp
+                                                <tr class="hover:bg-gray-50 {{ $isEnrolled ? 'hidden' : '' }}"
+                                                    data-schedule-id="{{ $schedule['id'] }}">
+                                                    <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                                                        {{ $loop->iteration }}</td>
+                                                    <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                                                        {{ $schedule['course']['code'] }}</td>
+                                                    <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                                                        {{ $schedule['course']['name'] }}</td>
+                                                    <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                                                        {{ \Carbon\Carbon::parse($schedule['day'])->locale('id')->dayName }}, {{ $schedule['time'] }}</td>
+                                                    <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                                                        {{ $schedule['course']['semester'] }}</td>
+                                                    <td class="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                                                        {{ $schedule['course']['sks'] }}</td>
+                                                    <td class="border border-gray-200 px-4 py-3 text-center">
+                                                        <input type="checkbox" name="scheduleId"
+                                                            value="{{ $schedule['id'] }}"
+                                                            class="form-checkbox h-5 w-5 text-blue-600">
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                     <tr class="bg-gray-50">
