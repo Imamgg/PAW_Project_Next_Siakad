@@ -194,29 +194,42 @@
 
                     async deleteCourse(courseCode) {
                         const token = await axios.post('/token/get-token').then(res => res.data);
-                        const confirmDelete = confirm('Apakah Anda yakin ingin menghapus course ini?');
-                        if (confirmDelete) {
-                            try {
-                                await axios.delete(`http://localhost:3000/api/course/${courseCode}`, {
-                                    headers: {
-                                        'X-API-TOKEN': `${token}`
-                                    }
-                                });
-                                Swal.fire({
-                                    icon: "success",
-                                    title: "Success",
-                                    text: "Course berhasil dihapus",
-                                }).then(() => {
-                                    window.location.reload();
-                                });
-                            } catch (error) {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Error",
-                                    text: error.response?.data.errors || error.message,
-                                })
+                        
+                        Swal.fire({
+                            title: 'Apakah Anda yakin?',
+                            text: "Data mata kuliah ini akan dihapus secara permanen!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya, hapus!',
+                            cancelButtonText: 'Batal'
+                        }).then(async (result) => {
+                            if (result.isConfirmed) {
+                                try {
+                                    await axios.delete(`http://localhost:3000/api/course/${courseCode}`, {
+                                        headers: {
+                                            'X-API-TOKEN': `${token}`
+                                        }
+                                    });
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Berhasil!',
+                                        text: 'Data mata kuliah telah dihapus.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    }).then(() => {
+                                        window.location.reload();
+                                    });
+                                } catch (error) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Gagal!',
+                                        text: error.response?.data.errors || 'Terjadi kesalahan saat menghapus data.',
+                                    });
+                                }
                             }
-                        }
+                        });
                     }
                 }
             }
