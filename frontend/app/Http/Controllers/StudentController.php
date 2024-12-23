@@ -113,8 +113,12 @@ class StudentController extends Controller
 
     public function krs()
     {
+        $payments = Http::withHeaders([
+            'X-API-TOKEN' => $this->token
+        ])->get('http://localhost:3000/api/pembayaran')->json();
+
         if ($this->student['data']['role'] === "STUDENT") {
-            return view('student.student-krs', ['student' => $this->student, 'enrollments' => $this->enrollments, 'schedules' => $this->schedules]);
+            return view('student.student-krs', ['student' => $this->student, 'enrollments' => $this->enrollments, 'schedules' => $this->schedules,  'payments' => $payments['status'] === 200 ? $payments['data'] : null]);
         }
         return back()->withInput();
     }

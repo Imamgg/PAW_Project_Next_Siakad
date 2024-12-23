@@ -42,7 +42,7 @@
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                         </svg>
                         <div class="text-white">
-                            <a href="/student/grade"><h3 class="text-xl font-semibold">Nilai</h3></a>
+                            <a href="/student/grade"><h3 class="text-xl font-semibold">Transkip Nilai</h3></a>
                             <p class="text-emerald-100">Melihat Transkip Nilai</p>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
 
-                <!-- Library -->
+                <!-- Hasil Studi -->
                 <div class="group bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg shadow-lg p-6 hover-scale cursor-pointer">
                     <div class="flex items-center space-x-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transform group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -86,13 +86,13 @@
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                         </svg>
                         <div class="text-white">
-                            <a href="#"><h3 class="text-xl font-semibold">Perpustakaan</h3></a>
-                            <p class="text-pink-100">Akses Perpustakaan</p>
+                            <a href="/student/khs"><h3 class="text-xl font-semibold">Hasil Studi</h3></a>
+                            <p class="text-pink-100">Akses Hasil Studi</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Alumni -->
+                <!-- Beasiswa -->
                 <div class="group bg-gradient-to-br from-blue-700 to-blue-800 rounded-lg shadow-lg p-6 hover-scale cursor-pointer">
                     <div class="flex items-center space-x-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transform group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -102,8 +102,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                         <div class="text-white">
-                            <a href="#"><h3 class="text-xl font-semibold">Alumni</h3></a>
-                            <p class="text-blue-100">Daftar alumni</p>
+                            <a href="/student/beasiswa"><h3 class="text-xl font-semibold">Beasiswa</h3></a>
+                            <p class="text-blue-100">Akses Beasiswa</p>
                         </div>
                     </div>
                 </div>
