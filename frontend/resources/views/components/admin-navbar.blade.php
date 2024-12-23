@@ -14,8 +14,6 @@
     <!-- Profile Image with Dropdown -->
     <div x-data="{ open: false }" class="relative ml-auto sm:ml-0">
         <div @click="open = !open" class="relative w-10 h-10 overflow-hidden cursor-pointer rounded-[50%] group">
-            {{-- <img src="/image/1037.png" alt="Profile Image"
-                class="absolute w-full h-full object-cover left-0 top-0 transition-transform duration-300 transform group-hover:scale-110"> --}}
             <x-ionicon-person-circle-outline
                 class="absolute w-full h-full object-cover left-0 top-0 transition-transform duration-300 transform group-hover:scale-110" />
         </div>

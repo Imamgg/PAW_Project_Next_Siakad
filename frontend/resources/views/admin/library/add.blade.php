@@ -90,7 +90,7 @@
                                 title: 'Success',
                                 text: 'Book added successfully'
                             }).then(() => {
-                                window.location.replace('/admin/service/pembayaran');
+                                window.location.replace('/admin/service/perpustakaan');
                             });
                         })
                         .catch(function(error) {

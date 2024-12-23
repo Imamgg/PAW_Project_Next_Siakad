@@ -64,7 +64,7 @@
 
             <div class="bg-white rounded-lg shadow">
                 <div class="p-6">
-                    <h2 class="text-xl font-bold mb-4">Grafik Detail Transaksi (Mitrans)</h2>
+                    <h2 class="text-xl font-bold mb-4">Grafik Detail Transaksi</h2>
                     <div class="h-96">
                         <canvas id="transactionChart"></canvas>
                     </div>
@@ -72,7 +72,6 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             // Grafik Performa Akademik
             const academicCtx = document.getElementById('academicChart').getContext('2d');

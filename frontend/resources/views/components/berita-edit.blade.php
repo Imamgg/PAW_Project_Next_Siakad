@@ -12,20 +12,20 @@
             </div>
 
             <form id="editForm" class="space-y-4">
-                <input type="hidden" id="editId">
+                <input type="hidden" id="id">
                 <div>
-                    <label for="editJudul" class="block text-sm font-medium text-gray-700">Judul</label>
-                    <input type="text" id="editJudul" name="judul"
+                    <label for="judul" class="block text-sm font-medium text-gray-700">Judul</label>
+                    <input type="text" id="judul" name="judul"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                 </div>
                 <div>
-                    <label for="editKonten" class="block text-sm font-medium text-gray-700">Konten</label>
-                    <textarea id="editKonten" name="konten" rows="6"
+                    <label for="konten" class="block text-sm font-medium text-gray-700">Konten</label>
+                    <textarea id="konten" name="konten" rows="6"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
                 </div>
                 <div>
-                    <label for="editGambar" class="block text-sm font-medium text-gray-700">URL Gambar</label>
-                    <input type="text" id="editGambar" name="gambar"
+                    <label for="gambar" class="block text-sm font-medium text-gray-700">URL Gambar</label>
+                    <input type="file" id="gambar" name="gambar"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                 </div>
                 <div class="flex justify-end space-x-2">
@@ -45,10 +45,10 @@
 
 <script>
     function openEditModal(id, judul, konten, gambar) {
-        document.getElementById('editId').value = id;
-        document.getElementById('editJudul').value = judul;
-        document.getElementById('editKonten').value = konten;
-        document.getElementById('editGambar').value = gambar;
+        document.getElementById('id').value = id;
+        document.getElementById('judul').value = judul;
+        document.getElementById('konten').value = konten;
+        // document.getElementById('gambar').value = gambar;
         document.getElementById('editModal').classList.remove('hidden');
     }
 
@@ -57,20 +57,21 @@
         document.getElementById('editForm').reset();
     }
     async function submitEdit() {
-        const id = document.getElementById('editId').value;
-        const judul = document.getElementById('editJudul').value;
-        const konten = document.getElementById('editKonten').value;
-        const gambar = document.getElementById('editGambar').value;
+        const id = document.getElementById('id').value;
+        const judul = document.getElementById('judul').value;
+        const konten = document.getElementById('konten').value;
+        const gambar = document.getElementById('gambar').files[0];
         try {
             const token = await axios.post('/token/get-token').then(res => res.data);
             const response = await axios.patch(`http://localhost:3000/api/berita`, {
-                id: parseInt(id),
+                id,
                 judul,
                 konten,
                 gambar
             }, {
                 headers: {
-                    'X-API-TOKEN': token
+                    'Content-Type': 'multipart/form-data',
+                    'X-API-TOKEN': `${token}`,
                 }
             });
             if (response.status === 201) {

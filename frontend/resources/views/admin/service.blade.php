@@ -93,7 +93,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Tambah Alumni</h3>
                         <p class="text-gray-600 mb-6 text-sm">Kelola data alumni dengan mudah dan efisien</p>
-                        <a href=""
+                        <a href="/admin/service/alumni"
                             class="inline-flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 rounded-xl transition-colors group">
                             <span>Kelola Alumni</span>
                             <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
