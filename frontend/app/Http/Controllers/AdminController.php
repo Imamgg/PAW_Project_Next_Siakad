@@ -378,10 +378,13 @@ class AdminController extends Controller
         return back()->withInput();
     }
 
-    public function alumni()
+    public function server()
     {
         if ($this->admin['data']['role'] === "ADMIN") {
-            return view('admin.alumni.index', ['admin' => $this->admin, 'students' => $this->students, 'alumni' => $this->alumni]);
+            $server = Http::withHeaders([
+                'X-API-TOKEN' => $this->token
+            ])->get('http://localhost:3000/maintenance')->json();
+            return view('admin.server', ['admin' => $this->admin, 'server' => $server]);
         }
         return back()->withInput();
     }
