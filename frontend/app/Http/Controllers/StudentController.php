@@ -253,6 +253,14 @@ class StudentController extends Controller
         return back()->withInput();
     }
 
+    public function kritikSaran()
+    {
+        if ($this->student['data']['role'] === "STUDENT") {
+            return view('student.student-kritik-saran', ['student' => $this->student]);
+        }
+        return back()->withInput();
+    }
+
     public function process(Request $request)
     {
 
