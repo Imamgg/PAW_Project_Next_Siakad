@@ -107,6 +107,35 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Perpustakaan -->
+                <div class="group bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg shadow-lg p-6 hover-scale cursor-pointer">
+                    <div class="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transform group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                        <div class="text-white">
+                            <a href="/student/perpustakaan"><h3 class="text-xl font-semibold">Perpustakaan</h3></a>
+                            <p class="text-pink-100">Akses Perpustakaan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Berita -->
+                <div class="group bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-lg p-6 hover-scale cursor-pointer">
+                    <div class="flex items-center space-x-4">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transform group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <div class="text-white">
+                            <a href="/student/berita"><h3 class="text-xl font-semibold">Berita</h3></a>
+                            <p class="text-emerald-100">Melihat Berita</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 
