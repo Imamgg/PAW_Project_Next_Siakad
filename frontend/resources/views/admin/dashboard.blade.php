@@ -72,19 +72,8 @@
                     </div>
                 </div>
             </div>
-            <button onclick="toggleMaintenance()"
-                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700">Server</button>
-
         </div>
         <script>
-            async function toggleMaintenance() {
-                const response = await axios.patch('http://localhost:3000/maintenance/toggle-maintenance');
-                Swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: response.data.message
-                })
-            }
 
             function logManagement() {
                 return {
