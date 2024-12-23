@@ -18,6 +18,9 @@ class StudentController extends Controller
     public $scholarships;
     public $announcements;
     public $payments;
+    public $news;
+    public $libraries;
+    
     public function __construct()
     {
         $this->token = TokenController::get();
@@ -27,6 +30,8 @@ class StudentController extends Controller
         $this->schedules = ScheduleController::getSchedules();
         $this->announcements = PengumumanController::getAllAnnouncements();
         $this->scholarships = BeasiswaController::getAllBeasiswa();
+        $this->news = BeritaController::getNews();
+        $this->libraries = PerpustakaanController::getPerpustakaan();
         // Konfigurasi Midtrans
         Config::$serverKey = config('midtrans.server_key');
         Config::$isProduction = config('midtrans.is_production');
@@ -257,6 +262,22 @@ class StudentController extends Controller
     {
         if ($this->student['data']['role'] === "STUDENT") {
             return view('student.student-kritik-saran', ['student' => $this->student]);
+        }
+        return back()->withInput();
+    }
+
+    public function berita()
+    {
+        if ($this->student['data']['role'] === "STUDENT") {
+            return view('student.student-berita', ['student' => $this->student, 'news' => $this->news]);
+        }
+        return back()->withInput();
+    }
+
+    public function perpustakaan()
+    {
+        if ($this->student['data']['role'] === "STUDENT") {
+            return view('student.student-perpustakaan', ['student' => $this->student,  'libraries' => $this->libraries['status'] == 200 ? $this->libraries : null]);
         }
         return back()->withInput();
     }
